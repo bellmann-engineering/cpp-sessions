@@ -9,7 +9,8 @@ private:
 
 public:
     Sensor(int id, volatile uint32_t* reg) : m_id(id), m_register(reg) {
-        std::cout << "Sensor " << m_id << " initialisiert an Adresse " << m_register << std::endl;
+        std::cout << "Sensor " << m_id << " initialisiert an Adresse "
+                  << static_cast<const void*>(m_register) << std::endl;
     }
 
     int read() const {
