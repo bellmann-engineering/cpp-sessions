@@ -7,12 +7,16 @@ void overloaded(char*) {
     std::cout << "char*-Version\n";
 }
 
-int main() {
-    // NULL ist oft 0 – führt zur falschen Überladung
-    overloaded(NULL);          // ruft int-Version auf (wenn NULL=0)
-    overloaded(nullptr);       // ruft char*-Version auf
+// Eigene Definition, um das Verhalten von NULL zu demonstrieren
+#define MY_NULL 0
 
-    // nullptr kann nicht in int konvertiert werden
+int main() {
+    // NULL ist oft 0, kann aber auch (void*)0 sein – implementierungsabhängig.
+    // Um Eindeutigkeit zu schaffen, verwenden wir hier MY_NULL = 0.
+    overloaded(MY_NULL);          // ruft int-Version auf (weil 0 ein int ist)
+    overloaded(nullptr);          // ruft char*-Version auf
+
+    // nullptr kann nicht implizit in int konvertiert werden
     // int x = nullptr;        // Fehler
     int* p = nullptr;          // OK
     return 0;
