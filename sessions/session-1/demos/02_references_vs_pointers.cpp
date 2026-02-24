@@ -7,14 +7,15 @@ void swap_ptr_bad(int* a, int* b) {
     b = temp;
 }
 
-// Korrekte Pointer-Version
+// Korrekte Pointer-Version mit Null-Check (defensiv)
 void swap_ptr_good(int* a, int* b) {
+    if (!a || !b) return;          // Sicherheitscheck
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-// Referenz-Version (sicher)
+// Referenz-Version (sicher, kein Null-Check nötig)
 void swap_ref(int& a, int& b) {
     int temp = a;
     a = b;
@@ -26,10 +27,10 @@ int main() {
     std::cout << "Original: x=" << x << ", y=" << y << std::endl;
 
     swap_ptr_bad(&x, &y);
-    std::cout << "Nach swap_ptr_bad: x=" << x << ", y=" << y << std::endl;
+    std::cout << "Nach swap_ptr_bad (logisch falsch): x=" << x << ", y=" << y << std::endl;
 
     swap_ptr_good(&x, &y);
-    std::cout << "Nach swap_ptr_good: x=" << x << ", y=" << y << std::endl;
+    std::cout << "Nach swap_ptr_good (korrekt): x=" << x << ", y=" << y << std::endl;
 
     swap_ref(x, y);
     std::cout << "Nach swap_ref: x=" << x << ", y=" << y << std::endl;
