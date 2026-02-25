@@ -1,4 +1,4 @@
-# Übung 2: Referenzen vs. Pointer – Swap-Funktionen analysieren und korrigieren
+# Übung 2: Referenzen vs. Pointer – Swap-Funktionen
 
 **Ziel:** Verstehen, warum Referenzen sicherer sind, und typische Fehler bei Pointern erkennen.
 
