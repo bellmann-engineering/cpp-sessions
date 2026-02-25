@@ -1,9 +1,3 @@
-
----
-
-## 📄 `exercises/03_enum_class_nullptr.md`
-
-```markdown
 # Übung 3: enum class und nullptr – Typsichere Hardware-Konfiguration
 
 **Ziel:** Anwendung von `enum class` und `nullptr` zur Erhöhung der Typsicherheit in einer embedded‑typischen Konfigurationsroutine.
