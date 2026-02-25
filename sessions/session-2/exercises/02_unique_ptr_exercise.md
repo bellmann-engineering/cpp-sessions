@@ -1,6 +1,3 @@
-
-### `exercises/02_unique_ptr_exercise.md`
-```markdown
 # Übung 2: Eigener unique_ptr (vereinfacht)
 
 **Ziel:** Implementieren Sie eine vereinfachte Version von `std::unique_ptr` für den Typ `int`.
