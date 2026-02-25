@@ -1,9 +1,3 @@
-
----
-
-## 📄 `exercises/02_swap_pointer_vs_reference.md`
-
-```markdown
 # Übung 2: Referenzen vs. Pointer – Swap-Funktionen analysieren und korrigieren
 
 **Ziel:** Verstehen, warum Referenzen sicherer sind, und typische Fehler bei Pointern erkennen.
