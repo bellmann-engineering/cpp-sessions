@@ -1,6 +1,3 @@
-
-### `exercises/03_shared_ptr_cycle.md`
-```markdown
 # Übung 3: Zyklische Abhängigkeiten mit shared_ptr vermeiden
 
 **Ziel:** Verstehen, warum zyklische Referenzen mit `shared_ptr` zu Speicherlecks führen und wie `weak_ptr` das verhindert.
