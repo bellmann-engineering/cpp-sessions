@@ -3,6 +3,8 @@
 #include <map>
 #include <algorithm>
 
+// in g++ mit -std=c++20 flag komplieren
+
 // Legacy-Code (C++98/03 ähnlich)
 int legacyMax(int a, int b) {
     return (a > b) ? a : b;

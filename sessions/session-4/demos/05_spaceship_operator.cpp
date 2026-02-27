@@ -1,6 +1,8 @@
 #include <iostream>
 #include <compare>
 
+// in g++ mit -std=c++20 flag komplieren
+
 struct Point {
     int x, y;
     // Automatische Generierung aller Vergleichsoperatoren
