@@ -34,12 +34,12 @@ public:
     HeapBuffer(const HeapBuffer&) = delete;
     HeapBuffer& operator=(const HeapBuffer&) = delete;
 
-    // TODO: Verschiebe-Konstruktor (optional)
+    // TODO: Move-Konstruktor (optional)
     HeapBuffer(HeapBuffer&& other) noexcept {
         // ...
     }
 
-    // TODO: Verschiebe-Zuweisung (optional)
+    // TODO: Move-Zuweisung (optional)
     HeapBuffer& operator=(HeapBuffer&& other) noexcept {
         // ...
     }
