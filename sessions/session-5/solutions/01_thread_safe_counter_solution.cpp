@@ -1,7 +1,3 @@
----
-Lösungen (3 C++-Dateien)
-###  `solutions/
-```cpp
 #include <iostream>
 #include <thread>
 #include <mutex>
