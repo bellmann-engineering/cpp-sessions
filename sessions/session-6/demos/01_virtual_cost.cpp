@@ -3,17 +3,16 @@
 struct NoVirtual {
     int a;
     int b;
+    void f() {}              // nicht virtuell, keine Größenänderung
 };
 
 struct WithVirtual {
     int a;
     int b;
-    virtual void f() {}
+    virtual void f() {}      // virtuell, typischerweise vptr im Objekt
 };
 
 int main() {
-    std::cout << "Größe ohne virtuelle Funktionen: " << sizeof(NoVirtual) << " Byte\n";
-    std::cout << "Größe mit virtueller Funktion:   " << sizeof(WithVirtual) << " Byte\n";
-    // Erwartung: mit vptr 4/8 Byte mehr
-    return 0;
+    std::cout << "NoVirtual:   " << sizeof(NoVirtual) << " Byte\n";
+    std::cout << "WithVirtual: " << sizeof(WithVirtual) << " Byte\n";
 }
