@@ -1,16 +1,11 @@
 # Übung: C-Code analysieren und Probleme identifizieren
 
-**Ziel:** In realistischeren C-Codeausschnitten mögliche Fehlerquellen und Wartbarkeitsprobleme erkennen und überlegen, wie moderne C++-Konzepte diese vermeiden können.
-
----
-
 ## Aufgabe
 
 Analyiseren Sie die folgenden Codebeispiele.
 
 1. Beschreiben Sie, welche möglichen Probleme Sie erkennen.
 2. Erklären Sie, unter welchen Umständen diese Probleme auftreten können.
-3. Überlegen Sie, welche Sprachmittel oder Konzepte aus modernem C++ helfen würden.
 
 ---
 
