@@ -27,8 +27,8 @@ swap_ref(x, y);
 ```
 
 Beide Varianten funktionieren.
+Die Referenz-Version entspricht jedoch dem üblichen **C++-Stil**, weil kein Umgang mit Adressen (&) und Dereferenzierung (*) notwendig ist und damit eine ganze Klasse typischer Pointer-Fehler vermieden wird.
 
-Die Referenz-Version entspricht jedoch dem üblichen C++-Stil, weil kein Umgang mit Adressen (&) und Dereferenzierung (*) notwendig ist und damit eine ganze Klasse typischer Pointer-Fehler vermieden wird.
 ---
 
 # Übung: Pointer vs. Referenzen - Funktion selbst formulieren
