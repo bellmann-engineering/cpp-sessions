@@ -110,7 +110,3 @@ Schreiben Sie eine dritte Funktion, die
 2. Warum braucht die Referenz-Version keinen `nullptr`-Check?
 3. Was ist beim Funktionsaufruf der Unterschied zwischen Pointer und Referenz?
 4. Wann würden Sie Pointer trotzdem bewusst verwenden?
-
-
-So ist es offener: Die Teilnehmer müssen die Funktionssignaturen selbst hinschreiben und nicht nur vorhandene Bodies ausfüllen.
-```
