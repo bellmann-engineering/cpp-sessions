@@ -1,4 +1,4 @@
-# Übung Template-Klasse `Pair` mit Methoden
+# Übung: Template-Klasse `Pair` mit Methoden
 
 **Ziel:** Implementieren Sie eine generische Klasse `Pair<T1, T2>`, die zwei Werte verschiedener Typen speichern kann.
 
