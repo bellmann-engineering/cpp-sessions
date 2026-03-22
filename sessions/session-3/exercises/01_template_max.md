@@ -1,6 +1,6 @@
-# Übung 1: Template-Funktion `max` für verschiedene Typen
+# Übung 1: Template-Klasse `Pair` mit Methoden
 
-**Ziel:** Implementieren Sie ein Funktionstemplate `max`, das den größeren von zwei Werten zurückgibt.
+**Ziel:** Implementieren Sie eine generische Klasse `Pair<T1, T2>`, die zwei Werte verschiedener Typen speichern kann.
 
 ## Aufgabenstellung
 
@@ -8,15 +8,49 @@ Ergänzen Sie die fehlenden Teile (markiert mit `// TODO`) im folgenden Code.
 
 ```cpp
 #include <iostream>
+#include <string>
 
-// TODO: Definieren Sie ein Template max, das zwei Parameter a und b vergleicht
-// und den größeren zurückgibt.
+template<typename T1, typename T2>
+class Pair {
+private:
+    // TODO: Definieren Sie zwei Membervariablen:
+    // first vom Typ T1
+    // second vom Typ T2
+
+public:
+    // TODO: Implementieren Sie einen Konstruktor,
+    // der first und second initialisiert
+
+    // TODO: Implementieren Sie Getter:
+    // getFirst()
+    // getSecond()
+
+    // TODO: Implementieren Sie eine Methode print(),
+    // die beide Werte in der Form "(wert1, wert2)" ausgibt
+};
 
 int main() {
-    std::cout << max(3, 7) << std::endl;          // int
-    std::cout << max(3.14, 2.72) << std::endl;    // double
-    std::cout << max('a', 'z') << std::endl;       // char
+    Pair<int, double> p1(42, 3.14);
+    Pair<std::string, int> p2("Alter", 30);
 
-    // TODO: Testen Sie auch mit eigenen Typen (z.B. std::string)
+    p1.print();
+    std::cout << std::endl;
+
+    p2.print();
+    std::cout << std::endl;
+
+    std::cout << p1.getFirst() << std::endl;
+    std::cout << p2.getSecond() << std::endl;
+
     return 0;
 }
+```
+
+## Erweiterung
+
+Ergänzen Sie:
+
+* eine Methode `swap()`, die `first` und `second` vertauscht, falls beide denselben Typ haben
+* eine Methode `setFirst(...)`
+* eine Methode `setSecond(...)`
+
