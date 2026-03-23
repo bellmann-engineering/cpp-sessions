@@ -11,7 +11,8 @@ void printInfo(const T& value) {
         std::cout << value << " (floating point)\n";
     } else if constexpr (std::is_same_v<T, std::string>) {
         std::cout << '"' << value << '"' << '\n';
-    } else if constexpr (std::is_same_v<T, const char*>) {
+    } else if constexpr (std::is_same_v<std::decay_t<T>, char*>) { //decay macht aus T einen normalen Werttyp (entfernt Referenzen/const, Array -> Pointer)
+    //} else if constexpr (std::is_same_v<T, const char*>) { 
         std::cout << '"' << value << '"' << " (C-String)\n";
     } else {
         std::cout << "Unbekannter Typ\n";
@@ -24,5 +25,6 @@ int main() {
     printInfo("Hallo");          // const char*
     printInfo(std::string("Welt"));
     printInfo(std::vector<int>{1,2,3});
+
     return 0;
 }
