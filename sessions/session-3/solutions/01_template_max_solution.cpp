@@ -59,7 +59,7 @@ int main() {
     std::cout << p2.getSecond() << std::endl;
 
     // swap funktioniert nur hier
-    p3.swap();
+    p1.swap();
     p3.print();
     std::cout << std::endl;
 
