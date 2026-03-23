@@ -36,8 +36,8 @@ public:
     }
 
     // swap nur wenn T1 == T2
-    void swap() {
-        static_assert(std::is_same<T1, T2>::value, "swap() nur erlaubt wenn T1 == T2");
+    void swap() requires std::is_same_v<T1, T2>{
+        //static_assert(std::is_same<T1, T2>::value, "swap() nur erlaubt wenn T1 == T2");
         T1 temp = first;
         first = second;
         second = temp;
