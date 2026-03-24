@@ -137,4 +137,3 @@ void replaceSensor(std::unique_ptr<Sensor> newSensor);
 * Ownership wird korrekt übernommen
 
 
-Wenn Sie möchten, liefere ich Ihnen im nächsten Schritt eine **komplette Musterlösung** oder baue daraus eine **noch realistischere Variante mit Netzwerk-/F5-Bezug**, die näher an Ihrem tatsächlichen Projekt liegt.
