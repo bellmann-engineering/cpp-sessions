@@ -1,82 +1,140 @@
-# Übung 2: Eigener unique_ptr (vereinfacht)
+# 🧩 Übung: Ressourcenverwaltung in einem Monitoring-System
 
-**Ziel:** Implementieren Sie eine vereinfachte Version von `std::unique_ptr` für den Typ `int`.
+Sie entwickeln ein kleines System zur Verwaltung von Geräten (z. B. Sensoren).
+Die Objekte sollen **exklusive Ownership** besitzen und sauber verwaltet werden.
 
-## Aufgabenstellung
+---
 
-Ergänzen Sie die fehlenden Teile (markiert mit `// TODO`) im folgenden Code.
+## 🔧 Gegeben
 
 ```cpp
 #include <iostream>
-#include <utility>
+#include <memory>
+#include <vector>
+#include <string>
 
-template <typename T>
-class MyUniquePtr {
-private:
-    T* m_ptr;
-
+class Sensor {
 public:
-    // TODO: Konstruktor – übernimmt einen rohen Pointer (Default = nullptr)
-    explicit MyUniquePtr(T* ptr = nullptr) : m_ptr(ptr) {}
-
-    // TODO: Destruktor – löscht den verwalteten Speicher
-    ~MyUniquePtr() {
-        // ...
+    Sensor(std::string name) : name_(name) {
+        std::cout << "Sensor " << name_ << " erstellt\n";
     }
 
-    // Verboten: Kopieren
-    MyUniquePtr(const MyUniquePtr&) = delete;
-    MyUniquePtr& operator=(const MyUniquePtr&) = delete;
-
-    // TODO: Verschiebe-Konstruktor
-    MyUniquePtr(MyUniquePtr&& other) noexcept {
-        // ...
+    ~Sensor() {
+        std::cout << "Sensor " << name_ << " zerstört\n";
     }
 
-    // TODO: Verschiebe-Zuweisung
-    MyUniquePtr& operator=(MyUniquePtr&& other) noexcept {
-        // ...
+    void read() const {
+        std::cout << "Lese Daten von " << name_ << "\n";
     }
 
-    // Dereferenzierungsoperatoren
-    T& operator*() const { return *m_ptr; }
-    T* operator->() const { return m_ptr; }
-
-    // Zugriff auf rohen Pointer
-    T* get() const { return m_ptr; }
-
-    // Gibt den Besitz auf (ohne Löschen)
-    T* release() {
-        T* temp = m_ptr;
-        m_ptr = nullptr;
-        return temp;
-    }
-
-    // Löscht das verwaltete Objekt und setzt einen neuen Pointer
-    void reset(T* ptr = nullptr) {
-        delete m_ptr;
-        m_ptr = ptr;
-    }
+private:
+    std::string name_;
 };
+```
 
-int main() {
-    // Test 1: Erstellung und Nutzung
-    MyUniquePtr<int> p1(new int(42));
-    std::cout << *p1 << std::endl;
+---
 
-    // Test 2: Verschieben
-    MyUniquePtr<int> p2 = std::move(p1);
-    if (!p1.get()) std::cout << "p1 ist leer\n";
-    std::cout << *p2 << std::endl;
+## 📌 Aufgabenstellung
 
-    // Test 3: release und reset
-    int* raw = p2.release();
-    std::cout << "roher Pointer: " << *raw << std::endl;
-    delete raw;
+### 1. Device-Klasse mit exklusiver Ownership
 
-    MyUniquePtr<int> p3(new int(100));
-    p3.reset(new int(200));
-    std::cout << *p3 << std::endl;
+Erstellen Sie eine Klasse `Device`, die genau **einen Sensor besitzt**.
 
-    return 0;
-}
+**Anforderungen:**
+
+* Verwendung von `std::unique_ptr<Sensor>`
+* Konstruktor übernimmt Ownership eines Sensors
+* Methode `readSensor()`, die den Sensor nutzt
+
+---
+
+### 2. Factory-Funktion
+
+Implementieren Sie eine Funktion:
+
+```cpp
+std::unique_ptr<Sensor> createSensor(const std::string& name);
+```
+
+**Ziel:**
+
+* Erzeugung über `std::make_unique`
+* Kein direktes `new`
+
+---
+
+### 3. Übergabe von Ownership
+
+Erstellen Sie ein `Device`-Objekt mit einem Sensor aus der Factory.
+
+**Wichtig:**
+
+* Ownership muss korrekt per `std::move` übergeben werden
+* Nach der Übergabe darf der ursprüngliche Pointer nicht mehr verwendet werden
+
+---
+
+### 4. Verwaltung mehrerer Devices
+
+Erstellen Sie einen `std::vector<std::unique_ptr<Device>>`.
+
+**Anforderungen:**
+
+* Mehrere Devices hinzufügen
+* Jedes Device besitzt seinen eigenen Sensor
+* Alle Sensoren auslesen (Iteration)
+
+---
+
+### 5. Transfer zwischen Containern
+
+Verschieben Sie ein `Device` von einem Vektor in einen anderen.
+
+**Ziel:**
+
+* Kein Kopieren
+* Verwendung von `std::move`
+
+---
+
+### 6. Fehleranalyse
+
+Erklären Sie, warum folgender Code nicht funktioniert:
+
+```cpp
+std::unique_ptr<Sensor> s1 = createSensor("Temp");
+std::unique_ptr<Sensor> s2 = s1;
+```
+
+Und korrigieren Sie ihn.
+
+---
+
+## 🎯 Bonus (für Fortgeschrittene)
+
+Erweitern Sie das System:
+
+### A) Optionaler Sensor
+
+Ein `Device` kann auch **keinen Sensor** haben.
+
+* Wie prüfen Sie das sauber?
+* Wie vermeiden Sie Abstürze?
+
+---
+
+### B) Austausch eines Sensors
+
+Fügen Sie eine Methode hinzu:
+
+```cpp
+void replaceSensor(std::unique_ptr<Sensor> newSensor);
+```
+
+**Ziel:**
+
+* Alter Sensor wird automatisch freigegeben
+* Ownership wird korrekt übernommen
+
+
+Wenn Sie möchten, liefere ich Ihnen im nächsten Schritt eine **komplette Musterlösung** oder baue daraus eine **noch realistischere Variante mit Netzwerk-/F5-Bezug**, die näher an Ihrem tatsächlichen Projekt liegt.
