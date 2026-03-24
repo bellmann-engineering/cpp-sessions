@@ -29,6 +29,6 @@ int main() {
     render(s);
 
     // NotDrawable nd;
-    // render(nd); // Fehler, wie gewünscht
+    // render(nd); // Fehler, wie erwartet
     return 0;
 }
