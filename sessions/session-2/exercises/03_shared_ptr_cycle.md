@@ -53,10 +53,3 @@ class User {
     std::weak_ptr<ChatRoom> room_;  // statt shared_ptr
 };
 ```
-
-### Aufgabe
-
-* Programm erneut ausführen
-
-
-Wenn Sie möchten, gebe ich Ihnen danach eine **ultrakompakte Lösung in ~20 Zeilen**, die genau diesen Effekt zeigt.
