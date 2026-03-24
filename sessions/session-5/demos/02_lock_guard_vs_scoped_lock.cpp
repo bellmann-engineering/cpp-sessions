@@ -29,7 +29,7 @@ void safe() {
 }
 
 int main() {
-    // Deadlock-Gefahr (kommentieren Sie zum Testen ein)
+    // Deadlock-Gefahr
     // std::thread t1(deadlock_risk);
     // std::thread t2(deadlock_risk2);
     // t1.join(); t2.join();
